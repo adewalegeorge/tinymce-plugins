@@ -3,27 +3,13 @@
  * @description This is a TinyMCE plugin that adds a button to the toolbar for inserting an image slider
  * It allows users to enter image URLs and generates the HTML for a slider using the Splide.js library
  * The plugin uses the TinyMCE API to create a window with a textarea for entering image URLs
- * @module imageSliderPlugin
+ * @module imageCarouselPlugin
  * @requires tinymce
- * @requires umbraco
  * @requires splide
  */
 
-// using Umbraco.Cms.Core.Composing;
-// using Umbraco.Cms.Core.DependencyInjection;
-// using Umbraco.Cms.Core.RichTextEditor;
-// public class TinyMceImageSliderPluginComposer : IComposer
-// {
-//     public void Compose(IUmbracoBuilder builder)
-//     {
-//         builder.TinyMce()
-//             .AddPlugin("imageslider", "/js/imageSliderPlugin.js")
-//             .AppendToolbar("imageSlider");
-//     }
-// }
-
 (function () {
-  tinymce.PluginManager.add("imageslider", function (editor) {
+  tinymce.PluginManager.add("imageCarousel", function (editor) {
     function injectPluginStyles() {
       const style = document.createElement('style');
       style.textContent = `
@@ -52,7 +38,7 @@
     }
     injectPluginStyles();
 
-    editor.ui.registry.addButton("imageSlider", {
+    editor.ui.registry.addButton("imageCarousel", {
       text: "Add Slider",
       icon: "gallery",
       onAction: function () {

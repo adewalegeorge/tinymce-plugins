@@ -1,7 +1,8 @@
 tinymce.init({
   selector: '#mytextarea',
   plugins: ['imageslider', 'decoratedlist', 'lists', 'code'],
-  toolbar: 'undo redo | blocks styleselect | bold italic | bullist numlist decoratedlist | outdent indent | imageslider | code',
+  toolbar: 'undo redo | blocks styleselect | bold italic | bullist decoratedlist numlist outdent indent | imageslider | code',
+  contextmenu: 'link image table | decoratedList',
   content_style: `
     .mce-content-body .c-rte-image-slider {
       border: 1px solid #a3a2a2;
