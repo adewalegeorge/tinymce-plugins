@@ -1,46 +1,28 @@
+// tinymce.init({
+//   selector: '#mytextarea',
+//   plugins: ['imageslider', 'lists', 'advlist', 'decoratedlist', 'code'],
+//   toolbar: 'undo redo | blocks styleselect | bold italic | numlist bullist decoratedlist | imageslider | code',
+//   contextmenu: 'link image table',
+//   advlist_bullet_styles: "circle disc square inghams checkmark arrowhead asterisk counter",
+// });
+
 tinymce.init({
   selector: '#mytextarea',
-  plugins: ['imageslider', 'decoratedlist', 'lists', 'code'],
-  toolbar: 'undo redo | blocks styleselect | bold italic | bullist decoratedlist numlist outdent indent | imageslider | code',
-  contextmenu: 'link image table | decoratedList',
+  plugins: 'lists custombullist | code', // Include both standard lists and our custom plugin
+  toolbar: 'bullist | numlist | code', // Now this will show our enhanced dropdown
+  // Make sure custom styles appear in content
   content_style: `
-    .mce-content-body .c-rte-image-slider {
-      border: 1px solid #a3a2a2;
-      margin: 30px 0 10px;
-      position: relative; 
+    ul { 
+      list-style-type: disc; 
+      padding-left: 1.5em; 
     }
-
-    .mce-content-body .c-rte-image-slider:before {
-      content: "Image Slider";
-      display: block;
-      font-weight: bold;
-      font-size: 12px;
-      padding: 2px 10px;
-      position: absolute;
-      top: -10px;
-      left: 10px;
-      background-color: #fff;
-      border: 1px solid #a3a2a2;
+    ul[style*="circle"] { 
+      list-style-type: circle !important; 
     }
-
-    .mce-content-body .c-rte-image-slider .splide__list {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      overflow: hidden;
-      gap: 10px;
-      justify-content: center;
+    ul[style*="square"] { 
+      list-style-type: square !important; 
     }
-    .mce-content-body .c-rte-image-slider .splide__slide {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: inline-block;
-    }
-    .mce-content-body .c-rte-image-slider img {
-      max-width: 100%;
-      max-height: 200px;
-      height: auto;
-    }
-  `
+  `,
+  // Extend valid elements to allow custom list styles
+  extended_valid_elements: 'ul[class|style]'
 });
